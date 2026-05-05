@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel Pahlawan - Blog Pahlawan Indonesia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html">🏠 Home</a>
+            <a href="homepage.html">🏛️ Pahlawan</a>
+            <h2>🗽 Blog Pahlawan Indonesia</h2>
+            <div class="nav-links">
+                <a href="profile.html">👤 Profil</a>
+                <button onclick="toggleDarkMode()" id="darkModeBtn">🌙 Dark Mode</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="article-page">
+        <!-- Hero Section Artikel -->
+        <section class="article-hero">
+            <div class="container">
+                <a href="homepage.html" class="back-btn">← Kembali ke Pahlawan</a>
+                <h1 id="articleTitle">Loading...</h1>
+                <div class="article-meta">
+                    <span id="articleDate">6 Juni 1901</span>
+                    <span id="articleCategory">Sejarah Indonesia</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Konten Artikel -->
+        <section class="article-content container">
+            <div class="article-main">
+                <img id="heroImage" src="" alt="Pahlawan" class="article-img">
+                
+                <div class="article-body">
+                    <h2 id="articleSubtitle">Loading...</h2>
+                    <p id="articleText">Loading artikel...</p>
+                    
+                    <div class="article-facts">
+                        <h3>💡 Fakta Menarik</h3>
+                        <ul id="factsList">
+                            <li>Loading...</li>
+                        </ul>
+                    </div>
+
+                    <div class="article-quote">
+                        <blockquote id="famousQuote">"Loading..."</blockquote>
+                        <cite id="quoteAuthor">-</cite>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="article-sidebar">
+                <div class="related-heroes">
+                    <h3>👥 Pahlawan Lainnya</h3>
+                    <div class="related-list">
+						<a href="?hero=soekarno" class="related-item">Ir Soekarno</a>
+                        <a href="?hero=hatsumoyo" class="related-item">Moh. Hatta</a>
+                        <a href="?hero=diponegoro" class="related-item">Pangeran Diponegoro</a>
+                        <a href="?hero=cutnyakdhien" class="related-item">Cut Nyak Dhien</a>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Load artikel berdasarkan URL parameter
+        loadArticle();
+        
+        function loadArticle() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const hero = urlParams.get('hero') || 'soekarno'; // Default Soekarno
+            
+            const articles = {
+                soekarno: {
+                    title: "Ir. Soekarno - Bapak Bangsa Indonesia",
+                    subtitle: "Proklamator Kemerdekaan & Presiden Pertama RI",
+                    image: "soekarno.jpg",
+                    date: "6 Juni 1901 - 21 Juni 1970",
+                    text: `Ir. Soekarno lahir di Surabaya, 6 Juni 1901 dari pasangan Raden Soekemi Sosrodihardjo dan Ida Ayu Nyoman. 
+                    Ia adalah <strong>proklamator kemerdekaan Indonesia</strong> bersama Moh. Hatta pada 17 Agustus 1945.
+                    
+                    Soekarno dikenal dengan pidato-pidatonya yang menggelegar seperti "Lahirnya Pancasila" dan menjadi 
+                    <em>Presiden pertama Republik Indonesia</em> selama 22 tahun (1945-1967).
+                    
+                    Ia merumuskan <strong>Pancasila</strong> sebagai dasar negara dan memproklamasikan "Demokrasi Terpimpin".`,
+                    facts: [
+                        "Pendiri PNI (1927)",
+                        "Pencetus Konferensi Asia-Afrika 1955",
+                        "Panggilan: Bung Karno",
+                        "Hobi: Arsitektur & Seni"
+                    ],
+                    quote: "Beri aku 1.000 orang tua, nanti akan kucabut Semeru dari akarnya. Beri aku 10 pemuda, nanti akan kuguncangkan dunia.",
+                    author: "Ir. Soekarno"
+                },
+                hatsumoyo: {
+                    title: "Mohammad Hatta - Bapak Koperasi Indonesia",
+                    subtitle: "Wakil Proklamator & Perdana Menteri Pertama",
+                    image: "hatta.jpg",
+                    date: "12 Agustus 1902 - 15 Maret 1980",
+                    text: `Dr. Mohammad Hatta lahir di Bukittinggi, Sumatra Barat. Ia adalah <strong>Wakil Presiden pertama RI</strong> 
+                    dan <strong>Perdana Menteri pertama</strong>. Bersama Soekarno, ia membacakan Proklamasi Kemerdekaan.
+                    
+                    Dikenal sebagai ekonom ulung, Hatta merumuskan konsep <em>koperasi</em> sebagai pilar ekonomi Indonesia.`,
+                    facts: [
+                        "Pendiri Perhimpunan Indonesia",
+                        "Bapak Koperasi Indonesia",
+                        "Panggilan: Bung Hatta",
+                        "Belajar di Belanda"
+                    ],
+                    quote: "Kemerdekaan itu bukan akhir, melainkan permulaan.",
+                    author: "Moh. Hatta"
+                },
+                diponegoro: {
+                    title: "Pangeran Diponegoro - Ulama Pemberontak",
+                    subtitle: "Pemimpin Perang Jawa Melawan Belanda",
+                    image: "diponegoro.jpg",
+                    date: "11 November 1785 - 8 Januari 1855",
+                    text: `Pangeran Diponegoro memimpin <strong>Perang Diponegoro (1825-1830)</strong>, salah satu perlawanan terbesar 
+                    melawan penjajah Belanda di Jawa. Ia adalah ulama, pujangga, dan panglima perang.
+                    
+                    Perang ini menggerakkan rakyat Jawa dari berbagai kalangan melawan penindasan Belanda.`,
+                    facts: [
+                        "Memimpin 200.000 pasukan",
+                        "Perang terbesar di Jawa",
+                        "Diwasa 8 Januari",
+                        "Dibuang ke Makassar"
+                    ],
+                    quote: "Aku berperang bukan untuk kedudukan, tetapi untuk agama dan tanah air.",
+                    author: "Pangeran Diponegoro"
+                },
+                cutnyakdhien: {
+                    title: "Cut Nyak Dhien - Ratu Perang Aceh",
+                    subtitle: "Pahlawan Wanita Melawan Belanda",
+                    image: "dien.jpg",
+                    date: "1848 - 6 November 1908",
+                    text: `Cut Nyak Dhien adalah <strong>pahlawan wanita Aceh</strong> yang memimpin perlawanan melawan Belanda selama 
+                    <em>25 tahun</em>. Setelah suami tewas, ia melanjutkan perjuangan dengan gagah berani.
+                    
+                    Ia menjadi simbol ketangguhan perempuan Aceh dalam mempertahankan tanah air.`,
+                    facts: [
+                        "Perang 25 tahun",
+                        "Pernikahan kedua dengan Teuku Umar",
+                        "Diwasa 6 November",
+                        "Pahlawan wanita pertama"
+                    ],
+                    quote: "Aku lebih memilih mati daripada menyerah kepada Belanda.",
+                    author: "Cut Nyak Dhien"
+                }
+            };
+
+            const article = articles[hero];
+            if (article) {
+                document.getElementById('articleTitle').textContent = article.title;
+                document.getElementById('articleSubtitle').textContent = article.subtitle;
+                document.getElementById('heroImage').src = article.image;
+                document.getElementById('heroImage').alt = article.title;
+                document.getElementById('articleDate').textContent = article.date;
+                document.getElementById('articleText').innerHTML = article.text;
+                document.getElementById('articleCategory').textContent = 'Sejarah Indonesia';
+                
+                // Facts
+                const factsList = document.getElementById('factsList');
+                factsList.innerHTML = '';
+                article.facts.forEach(fact => {
+                    const li = document.createElement('li');
+                    li.textContent = fact;
+                    factsList.appendChild(li);
+                });
+                
+                // Quote
+                document.getElementById('famousQuote').textContent = article.quote;
+                document.getElementById('quoteAuthor').textContent = article.author;
+            }
+        }
+    </script>
+</body>
+</html>

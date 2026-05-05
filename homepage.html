@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - Blog Pahlawan Indonesia</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html">🏠 Home</a>
+            <h2>🗽 Blog Pahlawan Indonesia</h2>
+            <div class="nav-links">
+                <a href="profile.html">👤 Profil</a>
+                <button onclick="toggleDarkMode()" id="darkModeBtn">🌙 Dark Mode</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="homepage">
+        <header class="page-header">
+            <h1>Daftar Pahlawan Indonesia</h1>
+            <p>Pilih pahlawan yang ingin kamu pelajari kisah perjuangannya</p>
+        </header>
+
+        <section class="heroes-grid">
+            <!-- SOEKARNO -->
+            <div class="hero-card" data-hero="soekarno">
+                <img src="soekarno.jpg" alt="Ir. Soekarno">
+                <h3>Ir. Soekarno</h3>
+                <p>Proklamator Kemerdekaan Indonesia</p>
+            </div>
+            
+            <!-- HATTA -->
+            <div class="hero-card" data-hero="hatsumoyo">
+                <img src="hatta.jpg" alt="Moh Hatta">
+                <h3>Moh. Hatta</h3>
+                <p>Wakil Proklamator & Perdana Menteri</p>
+            </div>
+            
+            <!-- DIPONEGORO -->
+            <div class="hero-card" data-hero="diponegoro">
+                <img src="diponegoro.jpg" alt="Pangeran Diponegoro">
+                <h3>Pangeran Diponegoro</h3>
+                <p>Pemimpin Perang Jawa</p>
+            </div>
+            
+            <!-- CUT NYAK DHIEN -->
+            <div class="hero-card" data-hero="cutnyakdhien">
+                <img src="dien.jpg" alt="Cut Nyak Dhien">
+                <h3>Cut Nyak Dhien</h3>
+                <p>Pahlawan Perempuan Aceh</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- SCRIPT LENGKAP DI SINI - 100% JALAN! -->
+    <script>
+        // Dark Mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.getElementById('darkModeBtn');
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ Light Mode' : '🌙 Dark Mode';
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Load Dark Mode
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('darkModeBtn').textContent = '☀️ Light Mode';
+        }
+
+        // FUNGSI PAHLWAN - INI YANG PENTING!
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tambah event listener ke semua hero-card
+            document.querySelectorAll('.hero-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const hero = this.getAttribute('data-hero');
+                    window.location.href = `article.html?hero=${hero}`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
